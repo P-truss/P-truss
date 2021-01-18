@@ -73,15 +73,22 @@ int getBorder(int *piUpK, int *piDownK, int iKSpace, int iKMax, int k)
 
     /* handle no truss */
     itmpI = mpNK.lower_bound(iEUp);
+    printf("DEBUG up before: %d\n", iEUp);
     iEUp = itmpI->first;
+    printf("DEBUG up after: %d\n", iEUp);
     itmpI = mpNK.upper_bound(iEDown);
-    //printf("debug temp before: %d\n", itmpI->first);
     itmpI--;
     iEDown = itmpI->first;
     //printf("debug temp after: %d\n", itmpI->first);
     debug_assert(2 <= iEDown);
     *piUpK = iEUp;
     *piDownK = iEDown;
+
+    if (iEUp != iEDown)
+    {
+        printf("Unfinished function\n");
+        debug_assert(0);
+    }
 
     return 0;
 }
